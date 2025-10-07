@@ -15,10 +15,10 @@ export default defineNuxtModule<ModuleOptions>({
   setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
 
-    // Optional: example plugin
+    // Optional plugin
     addPlugin(resolver.resolve('./plugin'))
 
-    // Example: add test page
+    // Add test page
     nuxt.hook('pages:extend', (pages) => {
       pages.push({
         name: 'client-mrzen',
@@ -28,17 +28,17 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     nuxt.hook('modules:done', () => {
-      const tenantLayouts = resolver.resolve('./layouts')
+      const tenantRoot = resolver.resolve('.')
 
-      // Add to Nuxt layer dirs (Nuxt 4 compatible)
-      if (Array.isArray(nuxt.options._layers)) {
-        nuxt.options._layers.unshift({
-          config: { srcDir: tenantLayouts },
-        })
-        console.log(`Tenant layouts registered from: ${tenantLayouts}`)
-      } else {
-        console.warn('Could not access nuxt.options._layers — skipping layout registration')
-      }
+      // Add as an extra layer (Nuxt will discover layouts/pages/components)
+      //
+      nuxt.options._layers.unshift({
+        config: {
+          srcDir: tenantRoot,
+        }
+      })
+
+      console.log(`Tenant layer registered from: ${tenantRoot}`)
     })
 
     console.log(`@tomhood87/mrzen loaded with message: ${options.message}`)
