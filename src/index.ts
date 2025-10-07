@@ -14,11 +14,12 @@ export default defineNuxtModule<ModuleOptions>({
   },
   setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
+    const moduleRoot = resolver.resolve('.')
 
     // Optional plugin
     addPlugin(resolver.resolve('./plugin'))
 
-    // Add test page
+    // Example page for testing
     nuxt.hook('pages:extend', (pages) => {
       pages.push({
         name: 'client-mrzen',
@@ -27,18 +28,14 @@ export default defineNuxtModule<ModuleOptions>({
       })
     })
 
-    nuxt.hook('modules:done', () => {
-      const tenantRoot = resolver.resolve('.')
-
-      // Add as an extra layer (Nuxt will discover layouts/pages/components)
-      //
-      nuxt.options._layers.unshift({
+    nuxt.hook('app:resolve', () => {
+      nuxt.options._layers.push({
+        cwd: moduleRoot, // The root of your module
         config: {
-          srcDir: tenantRoot,
-        }
+          srcDir: moduleRoot, // Required for Nitro + Kit directory resolution
+        },
       })
-
-      console.log(`Tenant layer registered from: ${tenantRoot}`)
+      console.log(`Tenant layer registered: ${moduleRoot}`)
     })
 
     console.log(`@tomhood87/mrzen loaded with message: ${options.message}`)
