@@ -1,4 +1,4 @@
-import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver, addNuxtLayer } from '@nuxt/kit'
 
 export interface ModuleOptions {
   message?: string
@@ -28,16 +28,14 @@ export default defineNuxtModule<ModuleOptions>({
       })
     })
 
-    nuxt.hook('app:resolve', () => {
-      nuxt.options._layers.push({
-        cwd: moduleRoot, // The root of your module
-        config: {
-          srcDir: moduleRoot, // Required for Nitro + Kit directory resolution
-        },
-      })
-      console.log(`Tenant layer registered: ${moduleRoot}`)
+    addNuxtLayer({
+      cwd: moduleRoot,
+      config: {
+        srcDir: moduleRoot,
+      },
     })
 
+    console.log(`Tenant layer added from: ${moduleRoot}`)
     console.log(`@tomhood87/mrzen loaded with message: ${options.message}`)
   }
 })
