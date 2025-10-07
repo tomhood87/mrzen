@@ -1,4 +1,4 @@
-import { defineNuxtModule, addPlugin, createResolver, addNuxtLayer } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
 
 export interface ModuleOptions {
   message?: string
@@ -19,7 +19,7 @@ export default defineNuxtModule<ModuleOptions>({
     // Optional plugin
     addPlugin(resolver.resolve('./plugin'))
 
-    // Example page for testing
+    // Example test page
     nuxt.hook('pages:extend', (pages) => {
       pages.push({
         name: 'client-mrzen',
@@ -28,14 +28,16 @@ export default defineNuxtModule<ModuleOptions>({
       })
     })
 
-    addNuxtLayer({
-      cwd: moduleRoot,
-      config: {
-        srcDir: moduleRoot,
-      },
+    nuxt.hook('extendLayers', (layers) => {
+      layers.unshift({
+        cwd: moduleRoot,
+        config: {
+          srcDir: moduleRoot
+        }
+      })
+      console.log(`Tenant layer registered via extendLayers: ${moduleRoot}`)
     })
 
-    console.log(`Tenant layer added from: ${moduleRoot}`)
     console.log(`@tomhood87/mrzen loaded with message: ${options.message}`)
   }
 })
