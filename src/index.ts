@@ -25,6 +25,8 @@ export default defineNuxtModule<ModuleOptions>({
       })
     })
 
+    nuxt.options.dirs.layouts.push(resolver.resolve('./layouts'))
+
     console.log(`@tomhood87/mrzen loaded with message: ${options.message}`)
   }
 })
