@@ -1,0 +1,17 @@
+{
+  "name": "@tomhood87/mrzen",
+  "version": "0.0.1",
+  "main": "src/index.ts",
+  "type": "module",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "vue": "^3.3.0",
+    "nuxt": "^3.9.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "@nuxt/kit": "^3.9.0"
+  }
+}
