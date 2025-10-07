@@ -15,8 +15,10 @@ export default defineNuxtModule<ModuleOptions>({
   setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
 
+    // Register plugin (optional)
     addPlugin(resolver.resolve('./plugin'))
 
+    // Add a test route
     nuxt.hook('pages:extend', (pages) => {
       pages.push({
         name: 'client-mrzen',
@@ -25,7 +27,18 @@ export default defineNuxtModule<ModuleOptions>({
       })
     })
 
-    nuxt.options.dirs.layouts.push(resolver.resolve('./layouts'))
+    nuxt.hook('app:resolve', () => {
+      const dirs = nuxt.options.dirs || {}
+      const layoutsDir = dirs.layouts || nuxt.options._layers?.[0]?.config?.dirs?.layouts
+
+      if (Array.isArray(nuxt.options.dirs?.layouts)) {
+        nuxt.options.dirs.layouts.push(resolver.resolve('./layouts'))
+      } else if (layoutsDir) {
+        nuxt.options.dirs.layouts = [layoutsDir, resolver.resolve('./layouts')]
+      } else {
+        console.warn('Could not extend layouts directory — fallback skipped')
+      }
+    })
 
     console.log(`@tomhood87/mrzen loaded with message: ${options.message}`)
   }
