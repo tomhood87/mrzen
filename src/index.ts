@@ -29,7 +29,7 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     nuxt.hook('extendLayers', (layers) => {
-      layers.unshift({
+      layers.push({
         cwd: moduleRoot,
         config: {
           srcDir: moduleRoot
