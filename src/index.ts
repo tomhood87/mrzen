@@ -15,10 +15,10 @@ export default defineNuxtModule<ModuleOptions>({
   setup(options, nuxt) {
     const resolver = createResolver(import.meta.url)
 
-    // Register plugin (optional)
+    // Optional: example plugin
     addPlugin(resolver.resolve('./plugin'))
 
-    // Add a test route
+    // Example: add test page
     nuxt.hook('pages:extend', (pages) => {
       pages.push({
         name: 'client-mrzen',
@@ -27,16 +27,17 @@ export default defineNuxtModule<ModuleOptions>({
       })
     })
 
-    nuxt.hook('app:resolve', () => {
-      const dirs = nuxt.options.dirs || {}
-      const layoutsDir = dirs.layouts || nuxt.options._layers?.[0]?.config?.dirs?.layouts
+    nuxt.hook('modules:done', () => {
+      const tenantLayouts = resolver.resolve('./layouts')
 
-      if (Array.isArray(nuxt.options.dirs?.layouts)) {
-        nuxt.options.dirs.layouts.push(resolver.resolve('./layouts'))
-      } else if (layoutsDir) {
-        nuxt.options.dirs.layouts = [layoutsDir, resolver.resolve('./layouts')]
+      // Add to Nuxt layer dirs (Nuxt 4 compatible)
+      if (Array.isArray(nuxt.options._layers)) {
+        nuxt.options._layers.unshift({
+          config: { srcDir: tenantLayouts },
+        })
+        console.log(`Tenant layouts registered from: ${tenantLayouts}`)
       } else {
-        console.warn('Could not extend layouts directory — fallback skipped')
+        console.warn('Could not access nuxt.options._layers — skipping layout registration')
       }
     })
 
