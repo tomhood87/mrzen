@@ -17,5 +17,12 @@
     "nuxt": "^4.1.3",
     "typescript": "^5.9.3",
     "vue": "latest"
-  }
+  },
+  "files": [
+    "nuxt.config.ts",
+    "assets",
+    "layouts",
+    "pages",
+    "components"
+  ]
 }
