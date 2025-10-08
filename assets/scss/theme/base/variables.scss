@@ -1,0 +1,29 @@
+/*==============================================================================
+// File:        _variables.scss
+// Package:     Webiny / Mr Zen
+// Synopsis:    Main variables & reusable items - SASS
+//============================================================================*/
+
+/*------------------------------------------------------------------------------
+// Global Variables / Bootstrap 5 :root variables
+//----------------------------------------------------------------------------*/
+
+$primary: #0043B3;
+$secondary: #334A71;
+$alternate: #FFC200;
+$highlight: #CC2978;
+$default: #262626;
+
+
+/*------------------------------------------------------------------------------
+// CSS Variables
+//----------------------------------------------------------------------------*/
+
+:root {
+  // Main Colours
+  --mz-primary: #{$primary};
+  --mz-secondary: #{$secondary};
+  --mz-alternate: #{$alternate};
+  --mz-highlight: #{$highlight};
+  --mz-default: #{$default};
+}
