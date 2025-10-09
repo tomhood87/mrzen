@@ -1,4 +1,7 @@
 /*Base styles*/
 @import "theme/base/variables.scss";
+@import "theme/base/mixins.scss";
 @import "theme/base/style.scss";
 @import "theme/base/type.scss";
+/*Component styles*/
+@import "theme/components/list.scss";

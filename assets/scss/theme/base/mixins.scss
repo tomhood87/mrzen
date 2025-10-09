@@ -1,0 +1,26 @@
+/*==============================================================================
+// File:        mixins.scss
+// Package:     Webiny / Mr Zen
+// Synopsis:    Main mixins & reusable items - SASS
+//============================================================================*/
+
+/* Adjoining Class. */
+@mixin adjoin($adjoin) {
+  &.#{$adjoin} {
+    @content;
+  }
+}
+
+/* BEM Element. */
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+/* BEM Modifier. */
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
