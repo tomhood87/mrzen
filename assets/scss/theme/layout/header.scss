@@ -7,9 +7,9 @@
 .mz-header {
   background: var(--mz-base-white);
   z-index: var(--mz-z-index-top);
+  padding: var(--mz-p-df);
   position: sticky;
   width: 100%;
-  padding: 0;
   top: -1px;
 
   /*==============================================================================

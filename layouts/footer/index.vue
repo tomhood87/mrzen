@@ -3,7 +3,11 @@
 
 <template>
   <footer id="footer-layout-one" class="mz-footer">
-    Footer Layout One
+    <div class="container">
+      <div class="row">
+        <div>Copyright 2025. All rights reserved.</div>
+      </div>
+    </div>
   </footer>
 </template>
 
