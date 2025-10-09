@@ -4,7 +4,7 @@ const { data:menu } = await useFetch('/api/menu')
 
 <template>
   <header id="header-layout-one" class="mz-header">
-    <nav>
+    <nav class="mb-3">
       <ul class="mz-list mz-list--menu">
         <li
           v-for="(item, i) in menu"

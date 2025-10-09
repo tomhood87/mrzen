@@ -19,13 +19,14 @@
   @include modifier("menu") {
     text-transform: none;
     flex-direction: row;
+    display: flex;
     height: auto;
 
     li {
-      display: flex;
-      align-items: center;
       justify-content: space-around;
-      margin: 0;
+      margin: 0 var(--m-df) 0 0;
+      align-items: center;
+      display: flex;
     }
   }
 }

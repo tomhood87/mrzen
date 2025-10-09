@@ -1,9 +1,10 @@
 /*==============================================================================
-// File:        type.scss
+// File:        footer.scss
 // Package:     Webiny / Mr Zen
-// Synopsis:    Main type styling - SASS
+// Synopsis:    Main footer styles for the website - SASS
 //============================================================================*/
 
-h1, h3, h3 {
-  color: var(--mz-primary);
+.mz-footer {
+  background: var(--mz-primary-100);
+  position: relative;
 }

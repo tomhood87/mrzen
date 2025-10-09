@@ -4,6 +4,20 @@
 // Synopsis:    Main mixins & reusable items - SASS
 //============================================================================*/
 
+/*------------------------------------------------------------------------------
+// Mixins
+//----------------------------------------------------------------------------*/
+
+/* Default transition setup. */
+
+@mixin insert-transition($property, $duration, $type, $delay) {
+  -webkit-transition: $property $duration $type $delay;
+  -moz-transition: $property $duration $type $delay;
+  -ms-transition: $property $duration $type $delay;
+  -o-transition: $property $duration $type $delay;
+  transition: $property $duration $type $delay
+}
+
 /* Adjoining Class. */
 @mixin adjoin($adjoin) {
   &.#{$adjoin} {

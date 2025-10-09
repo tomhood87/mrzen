@@ -1,0 +1,28 @@
+/*==============================================================================
+// File:        header.scss
+// Package:     Webiny / Mr Zen
+// Synopsis:    Main header styles for the website - SASS
+//============================================================================*/
+
+.mz-header {
+  background: var(--mz-base-white);
+  z-index: var(--mz-z-index-top);
+  position: sticky;
+  width: 100%;
+  padding: 0;
+  top: -1px;
+
+  /*==============================================================================
+  // Elements
+  //============================================================================*/
+
+  @include element("logo") {
+    padding: 0;
+
+    img {
+      @include insert-transition(height, .3s, ease, 0s);
+
+      height: 58px;
+    }
+  }
+}
