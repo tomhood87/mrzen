@@ -3,7 +3,12 @@ const { data:menu } = await useFetch('/api/menu')
 const { data: settings } = await useAsyncData('site-settings', () =>
   $fetch('/api/site-settings')
 )
-const filteredMenu = computed(() => menu.value.filter(item => item.slug !== '/' ))
+// Computed variables.
+//
+const filteredMenu = computed(() => {
+  const items = Array.isArray(menu.value?.data) ? menu.value.data : (Array.isArray(menu.value) ? menu.value : [])
+  return items.filter(item => item.slug !== '/')
+})
 </script>
 
 <template>
