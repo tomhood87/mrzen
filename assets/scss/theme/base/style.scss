@@ -35,6 +35,23 @@ iframe {
     @include fluid-prop(font-size, $viewport-xs, $viewport-xl, 48px, 92px);
 
     color: var(--mz-base-white);
+    font-weight: 800;
+
+    a {
+      -webkit-text-stroke-width: 2px;
+      -webkit-text-stroke-color: #fff;
+      transition: all .3s ease;
+      text-decoration: none;
+      color: transparent;
+      border-bottom-width: 8px;
+
+      &:focus,
+      &:hover {
+        -webkit-text-stroke-color: #0043b3;
+        text-shadow: 0 0 30px hsla(0, 0%, 100%, .5);
+        color: var(--mz-primary);
+      }
+    }
   }
 }
 
