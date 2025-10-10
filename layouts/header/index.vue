@@ -6,7 +6,7 @@ const { data: settings } = await useAsyncData('site-settings', () =>
 // Computed variables.
 //
 const filteredMenu = computed(() => {
-  const items = Array.isArray(menu.value?.data) ? menu.value.data : (Array.isArray(menu.value) ? menu.value : [])
+  const items = menu.value ? Object.values(menu.value) : []
   return items.filter(item => item.slug !== '/')
 })
 </script>
