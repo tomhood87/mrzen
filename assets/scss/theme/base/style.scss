@@ -59,11 +59,25 @@ iframe {
   }
 }
 
+.home-video iframe {
+  width: 100vw;
+  height: 56.25vw;
+  min-height: 100vh;
+  min-width: 177.77vh;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition: opacity .5s ease-out;
+}
+
 .video-preview {
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
+  max-height: 100vh;
 
   img {
     top: 0;
