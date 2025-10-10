@@ -3,6 +3,7 @@ const { data:menu } = await useFetch('/api/menu')
 const { data: settings } = await useAsyncData('site-settings', () =>
   $fetch('/api/site-settings')
 )
+const filteredMenu = computed(() => menu.value.filter(item => item.slug !== '/' ))
 </script>
 
 <template>
@@ -20,10 +21,10 @@ const { data: settings } = await useAsyncData('site-settings', () =>
       </NuxtLink>
     </div>
     <!-- Navigation -->
-    <nav class="mb-3">
+    <nav class="d-none d-lg-block mb-3">
       <ul class="mz-list mz-list--menu">
         <li
-          v-for="(item, i) in menu"
+          v-for="(item, i) in filteredMenu"
           :key="i"
           class="mz-link"
         >
