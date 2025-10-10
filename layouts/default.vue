@@ -7,7 +7,7 @@ import Footer from '~/layouts/footer/index.vue'
   <Header />
   <div class="mz-layout-default mrzen-default-layout">
     <!-- Page content -->
-    <main class="flex-1 container mx-auto p-6">
+    <main>
       <slot />
     </main>
   </div>
