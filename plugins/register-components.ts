@@ -1,4 +1,6 @@
-import { defineNuxtPlugin } from '#app'
+import type { NuxtApp } from 'nuxt/app'
 import HelloWorld from "../components/HelloWorld.vue";
 
-export default defineNuxtPlugin((nuxtApp) => {})
+export default (nuxtApp: NuxtApp) => {
+  nuxtApp.vueApp.component('HelloWorld', HelloWorld)
+}
