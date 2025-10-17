@@ -1,9 +1,8 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import registerComponents from './plugins/register-components'
+
 export default defineNuxtConfig({
   devtools: { enabled: true },
   pageTransition: { name: 'page', mode: 'out-in' },
   layoutTransition: { name: 'layout', mode: 'out-in' },
-  plugins: [
-    '~/plugins/register-components.ts'
-  ]
+  plugins: [registerComponents]
 })
