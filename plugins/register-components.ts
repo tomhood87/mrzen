@@ -1,4 +1,4 @@
-// import { defineNuxtPlugin } from 'nuxt/app'
-// import HelloWorld from "../components/HelloWorld.vue";
+import { defineNuxtPlugin } from 'nuxt/app'
+import HelloWorld from "../components/HelloWorld.vue";
 
-// export default defineNuxtPlugin((nuxtApp) => {})
+export default defineNuxtPlugin((nuxtApp) => {})
