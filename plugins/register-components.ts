@@ -1,6 +1,7 @@
-import type { NuxtApp } from 'nuxt/app'
-import HelloWorld from "../components/HelloWorld.vue";
+import * as LayerComponents from '../components'
 
-export default (nuxtApp: NuxtApp) => {
-  nuxtApp.vueApp.component('HelloWorld', HelloWorld)
+export function registerLayerComponents(vueApp: any) {
+  Object.entries(LayerComponents).forEach(([name, component]) => {
+    vueApp.component(name, component)
+  })
 }
