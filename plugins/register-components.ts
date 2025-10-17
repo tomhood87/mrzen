@@ -1,10 +1,6 @@
-import { defineNuxtPlugin } from '#app'
-import * as LayerComponents from '../components'
+import { defineNuxtPlugin } from 'nuxt/app'
+import HelloWorld from "../components/HelloWorld.vue";
 
 export default defineNuxtPlugin((nuxtApp) => {
-  Object.entries(LayerComponents).forEach(([name, component]) => {
-    if (component) {
-      nuxtApp.vueApp.component(name, component)
-    }
-  })
+  nuxtApp.vueApp.component('HelloWorld', HelloWorld)
 })
